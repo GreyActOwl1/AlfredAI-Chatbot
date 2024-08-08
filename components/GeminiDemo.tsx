@@ -4,18 +4,19 @@ import { useChat } from 'ai/react';
 const GeminiDemo: React.FC = () => {
   const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
     api: '/api/chat',
-    initialMessages: [],
+
+    initialMessages: []
   });
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-12">
       <h1 className="text-2xl font-bold mb-4">Google Generative Ai</h1>
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="textarea"
           value={input}
           onChange={handleInputChange}
-          className="border p-2 mb-4 w-full"
+          className="border p-2 mb-4 w-full h-full"
           placeholder="Enter your prompt"
         />
         <button
