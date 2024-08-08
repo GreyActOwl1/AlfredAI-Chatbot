@@ -1,75 +1,43 @@
 'use client'
-import { useState, FormEvent } from 'react';
-
-async function run(prompt: string) {
-  const response = await fetch('/api', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ prompt }),
-  });
-
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data.error || 'Failed to generate content');
-  }
-
-  return data.text;
-}
+import { useChat } from 'ai/react';
 
 const GeminiDemo: React.FC = () => {
-  const [prompt, setPrompt] = useState('');
-  const [result, setResult] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleGeneratePost = async () => {
-    setLoading(true);
-    setError(null);
-
-    try {
-      const fullPrompt = `${prompt}`;
-      const generatedText = await run(fullPrompt);
-      setResult(generatedText);
-    } catch (error) {
-      console.error('Error:', error);
-      setError((error as Error).message);
-      setResult('An error occurred. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
+    api: '/api/chat',
+    initialMessages: [],
+  });
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Gemini Integration</h1>
-      <form onSubmit={(e) => { e.preventDefault(); handleGeneratePost(); }}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
+          value={input}
+          onChange={handleInputChange}
           className="border p-2 mb-4 w-full"
           placeholder="Enter your prompt"
         />
         <button
           type="submit"
           className="bg-blue-500 text-white p-2 rounded"
-          disabled={loading}
+          disabled={isLoading}
         >
-          {loading ? 'Generating...' : 'Submit'}
+          {isLoading ? 'Generating...' : 'Submit'}
         </button>
       </form>
-      {error && (
-        <div className="mt-4 p-4 border rounded bg-red-100 text-red-600">
-          {error}
-        </div>
-      )}
-      {result && (
+      {error && <p className="text-red-500 mt-4">{error.message}</p>}
+      {messages.length != 0 && (
         <div className="mt-4 p-4 border rounded bg">
-          <pre className="whitespace-pre-wrap break-words max-w-full">{result}</pre>
+            {messages.map(m => (
+              <pre key={m.id} className="whitespace-pre-wrap break-words max-w-full">
+                {m.role === 'user' ? 'User: ' : 'AI: '}
+                {m.content}
+              </pre>
+            ))}
         </div>
       )}
+
     </div>
   );
 };
