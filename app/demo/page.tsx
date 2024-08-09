@@ -11,12 +11,6 @@ interface Message {
   createdAt: string | Date | undefined;
 }
 
-// interface Chat {
-//   name: string;
-//   multiMessages: Message[];
-// }
-
-
 export default function DocsPage() {
   const [chats, setChats] = useState<{ name: string; multiMessages: Message[]; }[]>([]);
   const [chatName, setChatName] = useState('');
@@ -92,21 +86,28 @@ export default function DocsPage() {
         chats.length > 0 && (
           <div className="flex flex-col px-4">
             <div className="flex w-full flex-col">
-              <Tabs aria-label="Options" placement='start'>
-                {/* {Object.entries(chats ?? {}).map(([key, chat], index) => (
-                  <Tab key={key} title={key}>
-                    <GeminiDemo chatName={key} multiMessages={chat as Message[]} setMultiMessages={(messages: any[]) => {
-                      const updatedChats: { name: string; multiMessages: Message[]; } = {
-                        ...chats,
-                        [key]: messages,
-                      };
-                      setChats(updatedChats);
-                    }} />
-                  </Tab>
-                ))} */}
+              <Tabs aria-label="Options" placement='end' size="lg">
                 
                 {chats.map((chat, index) => (
-                  <Tab key={index} title={chat.name}>
+                  <Tab key={index} title={
+                      <>
+                        <div className="flex flex-row  justify-between">
+                          <div className="flex-1 truncate ">{chat.name}</div>
+                            <Button
+                              color="danger"
+                              isIconOnly
+                              size="sm"
+                              className="ml-2"
+                              onPress={() => {
+                                const updatedChats = chats.filter((c, i) => c.name !== chats[index].name);
+                                setChats(updatedChats);
+                              }}
+                            >
+                              X
+                            </Button>
+                        </div>
+                      </>
+                    }>
                     <GeminiDemo
                       chatName={chat.name}
                       multiMessages={chat.multiMessages}
@@ -121,18 +122,6 @@ export default function DocsPage() {
                     />
                   </Tab>
                 ))}
-                {/* <Tab key="photos" title="Photos">
-                  <p>A</p>
-                  <GeminiDemo />
-                </Tab>
-                <Tab key="music" title="Music">
-                  <p>B</p>
-                  <GeminiDemo />
-                </Tab>
-                <Tab key="videos" title="Videos">
-                  <p>C</p>
-                  <GeminiDemo />
-                </Tab> */}
               </Tabs>
             </div>
           </div>
