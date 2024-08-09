@@ -1,141 +1,42 @@
-import {
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-  NavbarMenuItem,
-} from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
-import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
-import { link as linkStyles } from "@nextui-org/theme";
-import NextLink from "next/link";
-import clsx from "clsx";
+"use client"
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useContext } from 'react';
+import HamBurger from './HamBurger';
+import { ThemeContext } from '@/components/Theme';
+import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 
-import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-} from "@/components/icons";
 
-export const Navbar = () => {
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
-
-  return (
-    <NextUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
-          </NextLink>
-        </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <NextLink
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
-                )}
-                color="foreground"
-                href={item.href}
-              >
-                {item.label}
-              </NextLink>
-            </NavbarItem>
-          ))}
-        </ul>
-      </NavbarContent>
-
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Discord" href={siteConfig.links.discord}>
-            <DiscordIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
-          </Link>
-          <ThemeSwitch />
-        </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Button
-            isExternal
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
-            variant="flat"
-          >
-            Sponsor
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
-        <ThemeSwitch />
-        <NavbarMenuToggle />
-      </NavbarContent>
-
-      <NavbarMenu>
-        {searchInput}
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
+//Navbar Component Function
+const NavBar = () => {
+ const {theme,switchDark,switchLight} = useContext(ThemeContext);
+    return (
+        <nav className="-pl-2 md:ml-0 w-full lg:max-w-7xl h-28 pt-8 lg:mx-auto bg-white dark:bg-slate-800 flex justify-between">
+            {/* Logo*/}
+       <Link href="/"> <Image src="/images/logo.png" alt="Alfred AI Logo" width={150} height={150} className='-mt-2 w-36 md:w-48 flex items-start'/></Link>
+       
+        <div className='hidden lg:flex gap-x-8'>
+            {/* About Us Page Link */}
+       <Link href="/about" className='text-gray-700 dark:text-gray-100 dark:hover:text-white hover:text-black text-lg mt-1.5 font-medium'>About-us</Link>
+       {/*Theme Logic*/}
+      <div> {theme === 'dark' ? (
+              <MdOutlineLightMode className='md:mt-2 cursor-pointer' onClick={switchLight} size={28} color={'white'} />
+            ) : (
+              <MdDarkMode className='cursor-pointer md:mt-2' onClick={switchDark} size={28} />
+            )}</div>
+       <div className='flex gap-x-4'>
+        {/* Sign In Button */}
+         <button className='h-10 w-20 font-medium flex justify-center items-center text-gray-900 hover:text-white text-sm bg-white hover:bg-green-600 border-2 border-gray-900 dark:border-white dark:hover:border-none rounded-md'>Sign in</button>
+        {/* Sign Up Button */}
+        <button className='h-10 w-20 flex justify-center items-center font-medium text-white hover:text-gray-900 text-sm bg-green-600 hover:bg-white border-2 border-gray-900 dark:border-none rounded-md'>Sign up</button>
         </div>
-      </NavbarMenu>
-    </NextUINavbar>
-  );
-};
+        </div>
+            
+           {/* Hamburger Menu for Mobile Screen*/} 
+          <HamBurger/>
+
+        </nav>
+    );
+}
+
+export default NavBar;
