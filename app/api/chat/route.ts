@@ -1,4 +1,3 @@
-8-ui-redesign-home-page
 import { google } from "@ai-sdk/google";
 import { streamText } from "ai";
 
