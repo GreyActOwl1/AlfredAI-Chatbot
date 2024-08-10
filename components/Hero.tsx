@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 
 const Hero = () => {
     return (
@@ -7,11 +6,11 @@ const Hero = () => {
             {/* Heading text*/}
 <h1 className='text-2xl md:text-4xl text-gray-500 dark:text-gray-100 font-semibold text-center'><span className='text-green-600  '>Alfred AI</span>, a smart chatbot</h1>
 
-{/* Integrations part*/}
+{/* Features part*/}
 <div className="mt-16">
-    {/* Integrations text*/}
+    {/* Features heading*/}
 <h3 className="text-xl md:text-[26px] font-semibold text-gray-500/95 dark:text-gray-100 text-center">Features</h3>
-{/* Images part*/}
+{/* Features  text part*/}
 <div className="flex mt-6 items-center justify-center gap-x-16 md:gap-x-24 bg-gray-200 rounded-md w-full h-auto p-4 md:p-4 md:h-32">
  <div className="flex flex-col gap-y-0.5">
     <h5 className="text-gray-600 font-semibold text-md md:text-lg">Context Aware</h5>
