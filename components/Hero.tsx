@@ -3,7 +3,7 @@ import React from 'react';
 
 const Hero = () => {
     return (
-        <div className="pt-36 pb-20 bg-white dark:bg-black">
+        <div className="pt-20 pb-20 min-h-screen bg-white dark:bg-black">
             {/* Heading text*/}
 <h1 className='text-2xl md:text-4xl text-gray-500 dark:text-gray-100 font-semibold text-center'><span className='text-green-600  '>Alfred AI</span>, a smart chatbot</h1>
 

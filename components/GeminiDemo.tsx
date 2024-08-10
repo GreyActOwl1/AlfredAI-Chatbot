@@ -56,10 +56,10 @@ const GeminiDemo: React.FC = () => {
   });
 
   return (
-    <div className="min-h-screen w-full p-8 bg-white dark:bg-black">
+    <div className="min-h-screen w-full pb-12 p-0 md:p-8 bg-white dark:bg-black">
     {error && <p className="text-red-500 mt-4">{error.message}</p>}
       {messages.length != 0 && (
-        <div className="mt-4 p-8 border rounded  bg-gray-100 dark:bg-gray-100  text-gray-950">
+        <div className="mt-4 p-4 md:p-8 border rounded  bg-gray-100 dark:bg-gray-100  text-gray-950">
             {messages.map(m => (
               <pre key={m.id} className="whitespace-pre-wrap break-words max-w-full">
                 {m.role === 'user' ? 'User: ' : 'AI: '}
@@ -73,12 +73,12 @@ const GeminiDemo: React.FC = () => {
           type="text"
           value={input}
           onChange={handleInputChange}
-          className="border p-2 w-[90%] text-gray-950 dark:text-white outline-none h-full"
+          className="border p-2 w-[75%] md:w-[90%] text-gray-950 dark:text-white outline-none h-full"
           placeholder="Enter your prompt"
         />
         <button
           type="submit"
-          className="bg-blue-700 text-white w-[10%] h-full hover:bg-blue-500"
+          className="bg-blue-700 text-sm md:text-md p-1 text-white w-[25%] md:w-[10%] h-full hover:bg-blue-500"
           disabled={isLoading}
         >
           {isLoading ? 'Generating...' : 'Submit'}
