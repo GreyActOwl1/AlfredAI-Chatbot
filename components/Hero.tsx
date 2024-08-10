@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Hero = () => {
@@ -27,8 +28,8 @@ const Hero = () => {
 
     {/* Buttons */}
     <div className="flex justify-center gap-x-6 mt-8">
-<button className='w-36 md:w-48 h-12 rounded-md flex justify-center border-2 border-gray-300  dark:border-none items-center font-semibold text-md md:text-lg bg-white hover:text-white hover:border-green-700 hover:bg-green-700'>Login/Register</button>
-<button className='w-36 md:w-48 h-12 rounded-md flex justify-center border-2 border-green-700 dark:border-none items-center font-semibold text-md md:text-lg hover:border-gray-300 text-white bg-green-700 hover:text-black hover:bg-white'>Chat</button>
+<button className='w-36 md:w-48 h-12 rounded-md flex justify-center border-2 border-gray-300  dark:border-none items-center font-semibold text-md md:text-lg bg-white hover:text-white hover:border-green-700 hover:bg-green-700'><Link href="">Login/Register</Link></button>
+<button className='w-36 md:w-48 h-12 rounded-md flex justify-center border-2 border-green-700 dark:border-none items-center font-semibold text-md md:text-lg hover:border-gray-300 text-white bg-green-700 hover:text-black hover:bg-white'><Link href="/demo">Chat</Link></button>
 
     </div>
         </div>
