@@ -3,33 +3,36 @@ import Image from 'next/image';
 
 const Hero = () => {
     return (
-        <div className="pt-36 pb-20 bg-white dark:bg-slate-800">
+        <div className="pt-36 pb-20 bg-white dark:bg-black">
             {/* Heading text*/}
-<h1 className='text-2xl md:text-4xl text-gray-800 dark:text-gray-100 font-bold text-center'><span className='text-green-600 font-extrabold '>Alfred AI</span> is a smart way to chat with AI</h1>
+<h1 className='text-2xl md:text-4xl text-gray-500 dark:text-gray-100 font-semibold text-center'><span className='text-green-600  '>Alfred AI</span>, a smart chatbot</h1>
 
 {/* Integrations part*/}
 <div className="mt-16">
     {/* Integrations text*/}
-<h3 className="text-xl md:text-[26px] font-semibold text-gray-500/95 dark:text-gray-100 text-center">Integrations with</h3>
+<h3 className="text-xl md:text-[26px] font-semibold text-gray-500/95 dark:text-gray-100 text-center">Features</h3>
 {/* Images part*/}
-<div className="flex mt-6 items-center justify-evenly bg-gray-200  border-t border-b border-gray-500 dark:border-black rounded-md w-full h-28">
- 
- <Image src="/images/OpenAi.png" alt="Open AI Logo" width={200} height={200} className='w-24 h-20 md:w-52 md:h-24 mt-1 object-contain'/>
- <Image src="/images/Gemini.png" alt="Gemini Logo" width={200} height={200} className='w-24 h-16 md:w-52 -mt-2 md:h-24 object-contain'/>
- <Image src="/images/LlamaAi.png" alt="Llama AI logo" width={200} height={200} className='w-24 h-16 md:w-52 md:h-24 object-cover'/>
+<div className="flex mt-6 items-center justify-center gap-x-16 md:gap-x-24 bg-gray-200 rounded-md w-full h-auto p-4 md:p-4 md:h-32">
+ <div className="flex flex-col gap-y-0.5">
+    <h5 className="text-gray-600 font-semibold text-md md:text-lg">Context Aware</h5>
+    <p className="text-gray-500 text-sm md:text-md whitespaace-nowrap">Keeps the context from</p>
+    <p className="text-gray-500 text-sm md:text-md">previous conversation</p>
+ </div>
+ <div className="flex flex-col gap-y-0.5">
+    <h5 className="text-gray-600 font-semibold text-md md:text-lg">Sort by topics</h5>
+    <p className="text-gray-500 text-sm md:text-md">User can add topics to</p>
+    <p className="text-gray-500 text-sm md:text-md">organize their chats</p>
+ </div>
 </div>
     </div>  
-{/* Try now part */}
-<div className='pt-12 md:pt-16 flex flex-col gap-y-4'>
-    {/*Try now text*/}
-    <h4 className="text-black dark:text-gray-100 font-bold text-center text-2xl md:text-3xl">Try now !</h4>
+
     {/* Buttons */}
-    <div className="flex justify-center gap-x-6 mt-4">
-<button className='w-36 md:w-40 h-12 rounded-md flex justify-center border-2 border-black  dark:border-white items-center font-semibold text-lg bg-white hover:text-white hover:bg-green-600'>Sign In</button>
-<button className='w-36 md:w-40 h-12 rounded-md flex justify-center border-2 border-black dark:border-white items-center font-semibold text-lg text-white bg-green-600 hover:text-black hover:bg-white'>Sign Up</button>
+    <div className="flex justify-center gap-x-6 mt-8">
+<button className='w-36 md:w-48 h-12 rounded-md flex justify-center border-2 border-gray-300  dark:border-none items-center font-semibold text-md md:text-lg bg-white hover:text-white hover:border-green-700 hover:bg-green-700'>Login/Register</button>
+<button className='w-36 md:w-48 h-12 rounded-md flex justify-center border-2 border-green-700 dark:border-none items-center font-semibold text-md md:text-lg hover:border-gray-300 text-white bg-green-700 hover:text-black hover:bg-white'>Chat</button>
 
     </div>
-        </div></div>
+        </div>
     );
 }
 

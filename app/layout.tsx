@@ -19,7 +19,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={inter.className}>
 				<ThemeProvider>
-					<div className="bg-white w-full dark:bg-slate-800">
+					<div className="bg-white w-full dark:bg-black">
 						<NavBar />
 						{children}
 					</div>{" "}

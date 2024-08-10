@@ -19,7 +19,7 @@ const HamBurger = () => {
 	};
 
 	return (
-		<div className="pr-4 inline lg:hidden bg-white dark:bg-slate-800">
+		<div className="pr-4 inline lg:hidden bg-white dark:bg-black">
 			{/* HamBurger Menu Icon*/}
 			<div className="flex items-center lg:hidden gap-x-3">
 				{theme === "dark" ? (
@@ -43,33 +43,33 @@ const HamBurger = () => {
 					tabIndex={0}
 					aria-expanded={isOpen}
 					aria-controls="hamburger-menu"
-					className="relative border rounded-md cursor-pointer bg-white dark:bg-slate-800 text-slate-800 dark:text-white transition-all duration-200 hover:bg-gray-100 dark:hover:bg-slate-900 p-2 flex justify-center items-center"
+					className="relative border rounded-md cursor-pointer bg-white dark:bg-black text-slate-800 dark:text-white transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-950 p-2 flex justify-center items-center"
 				>
 					<RxHamburgerMenu size={19} />
 					{/* HamBurger Menu */}
 					{isOpen && (
 						<div
 							id="hamburger-menu"
-							className="absolute transition duration-200 mt-1 top-10 right-0.5 shadow-sm w-40 rounded-lg border dark:border-gray-100 h-40 flex flex-col items-center bg-white dark:bg-slate-800"
+							className="absolute transition duration-200 mt-1 top-10 right-0.5 shadow-sm w-40 rounded-lg border dark:border-gray-100 h-40 flex flex-col items-center bg-white dark:bg-black"
 						>
 							<div className="flex flex-col gap-y-2 text-md text-gray-950 dark:text-white font-medium w-full">
 								<Link
 									href="/about"
-									className="p-2 flex justify-center w-[98%] transition-all duration-200 hover:bg-gray-100 dark:hover:bg-slate-700 mt-2"
+									className="p-2 flex justify-center w-[98%] transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-500 mt-2"
 								>
 									About-us
 								</Link>
 								<Link
 									href=""
-									className="p-2 flex justify-center w-[98%] transition-all duration-200 hover:bg-gray-100 dark:hover:bg-slate-700"
+									className="p-2 flex justify-center w-[98%] transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-500"
 								>
-									Sign in
+									Login/Register
 								</Link>
 								<Link
-									href=""
-									className="p-2 flex justify-center w-[98%] transition-all duration-200 hover:bg-gray-100 dark:hover:bg-slate-700"
+									href="/demo"
+									className="p-2 flex justify-center w-[98%] transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-500"
 								>
-									Sign up
+									Chat
 								</Link>
 							</div>
 						</div>
