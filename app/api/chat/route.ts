@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     return result.toDataStreamResponse();
   } catch (error) {
     console.error('Error fetching data from Gemini AI:', error);
-    return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+    return Response.json({ error: (error as Error).message }, { status: 500 });
   }
 
 }
