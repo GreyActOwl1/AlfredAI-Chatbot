@@ -159,3 +159,4 @@ const GeminiDemo: React.FC<MyComponentProps> = ({chatName, multiMessages, setMul
   </div>
 );
 };
+export default GeminiDemo;
