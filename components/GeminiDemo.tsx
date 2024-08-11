@@ -126,7 +126,7 @@ const GeminiDemo: React.FC<MyComponentProps> = ({chatName, multiMessages, setMul
     console.log("messages when mounted: " + JSON.stringify(messages));
   }, [messages]);
 
-  return (   <div className="container mx-auto p-4 w-full" display: flex flex-direction: center>
+  return (   <div className="container mx-auto p-4 w-full">
     <h1 className="text-2xl font-bold mb-4">{chatName}</h1>
     <form onSubmit={handleSubmit}>
       <input
