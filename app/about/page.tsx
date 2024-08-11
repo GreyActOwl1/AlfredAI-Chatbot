@@ -20,7 +20,7 @@ export default function AboutPage() {
       <div className="w-full p-2 md:p-0 md:max-w-7xl mx-auto grid grid-cols-1 bg-white dark:bg-black gap-y-8 md:grid-cols-2 ">
         {/* Mapping TeamDetails Array*/}
         { teamDetails.map((item,index) => (
- <Link href ={item.LinkedinUrl} target="_blank" key={index} className=" p-4 md:p-0 flex flex-col items-center w-full md:w-[80%] h-auto md:h-80 space-y-4 hover:bg-gray-200 bg-gray-100 rounded-md">
+ <Link href ={item.LinkedinUrl} target="_blank" key={index} className=" p-4 md:p-0 flex flex-col items-center w-full md:w-[80%] h-auto md:h-80 space-y-4 hover:bg-gray-400 bg-gray-300 rounded-md">
  {/*Image*/}
 <Image src={item.imageUrl} alt={`${item.Name} Picture`} width={150} height={150} className=" mt-3 rounded-full"/>
  {/*Name*/}
