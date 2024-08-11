@@ -34,9 +34,8 @@
 
 
 //   return (<div
-//     className="flex flex-col gap-4"
-//   >
-//     <h1 className={title()}>Chat</h1> <Modal 
+//     className="flex flex-col gap-y-6 mt-20">
+//     <h1 className={title()}> <span className="flex justify-center mb-6 text-black dark:text-white">Chat</span></h1> <Modal 
 //         backdrop="opaque" 
 //         isOpen={isOpen} 
 //         onOpenChange={onOpenChange}
@@ -83,15 +82,15 @@
 //       >Add Chat</Button>
 //       {
 //         chats.length > 0 && (
-//           <div className="flex flex-col px-4">
-//             <div className="flex w-full flex-col">
-//               <Tabs aria-label="Options" placement='end' size="lg">
+//           <div className="flex flex-col m-4">
+//             <div className=" w-full bg-gray-100 dark:bg-gray-950 flex flex-col pt-4 m-2 md:p-12 pl-2 md:pl-20 items-start">
+//               <Tabs aria-label="Options" placement='top' size="lg" className="flex justify-center">
 
 //                 {chats.map((chat, index) => (
 //                   <Tab key={index} title={
 //                       <>
-//                         <div className="flex flex-row  justify-between">
-//                           <div className="flex-1 truncate ">{chat.name}</div>
+//                         <div className="flex justify-around">
+//                           <div className="truncate ">{chat.name}</div>
 //                             <Button
 //                               color="danger"
 //                               isIconOnly
@@ -127,17 +126,15 @@
 //         )
 //       }
 
-//       {/* <GeminiDemo /> */}
+//       { <GeminiDemo /> }
 //     </div>
 //   );
-// }
+// } */
 
-
-
-'use client'
+'use client';
 import { title } from "@/components/primitives";
 import GeminiDemo from "@/components/GeminiDemo";
-import {Tabs, Tab, Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/react";
+import { Tabs, Tab, Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@nextui-org/react";
 import { useState } from "react";
 
 interface Message {
@@ -150,8 +147,7 @@ interface Message {
 export default function DocsPage() {
   const [chats, setChats] = useState<{ name: string; multiMessages: Message[]; }[]>([]);
   const [chatName, setChatName] = useState('');
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
-
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   function addChat() {
     console.log("addChat()");
@@ -159,20 +155,17 @@ export default function DocsPage() {
     const updatedChats = [...chats, newChat];
 
     setChats(updatedChats);
-
-
     setChatName("");
     console.log("newChat: " + JSON.stringify(newChat));
     console.log("updatedChats: " + JSON.stringify(updatedChats));
-
   }
 
-
-  return (<div
-    className="flex flex-col gap-y-6 mt-20">
-    <h1 className={title()}> <span className="flex justify-center mb-6 text-black dark:text-white">Chat</span></h1> <Modal 
-        backdrop="opaque" 
-        isOpen={isOpen} 
+  return (
+    <div className="flex flex-col items-center justify-center gap-4 min-h-screen bg-gray-100">
+      <h1 className={`${title()} text-center`}>Chat</h1>
+      <Modal
+        backdrop="opaque"
+        isOpen={isOpen}
         onOpenChange={onOpenChange}
         classNames={{
           backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20"
@@ -181,7 +174,7 @@ export default function DocsPage() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1 text-center">Add New Chat</ModalHeader>
               <ModalBody>
                 <input
                   type="text"
@@ -191,9 +184,10 @@ export default function DocsPage() {
                     console.log(chatName);
                   }}
                   className="border p-2 mb-4 w-full"
+                  placeholder="Enter chat name"
                 />
               </ModalBody>
-              <ModalFooter>
+              <ModalFooter className="flex justify-center">
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
@@ -212,35 +206,35 @@ export default function DocsPage() {
           )}
         </ModalContent>
       </Modal>
-      <Button
-        onClick={onOpen}
-      >Add Chat</Button>
+      <Button onClick={onOpen}>Add Chat</Button>
       {
         chats.length > 0 && (
-          <div className="flex flex-col m-4">
-            <div className=" w-full bg-gray-100 dark:bg-gray-950 flex flex-col pt-4 m-2 md:p-12 pl-2 md:pl-20 items-start">
-              <Tabs aria-label="Options" placement='top' size="lg" className="flex justify-center">
-
+          <div className="flex flex-col items-center w-full px-4">
+            <div className="flex w-full flex-col items-center">
+              <Tabs aria-label="Options" placement="top" size="lg" className="w-full">
                 {chats.map((chat, index) => (
-                  <Tab key={index} title={
+                  <Tab
+                    key={index}
+                    title={
                       <>
-                        <div className="flex justify-around">
-                          <div className="truncate ">{chat.name}</div>
-                            <Button
-                              color="danger"
-                              isIconOnly
-                              size="sm"
-                              className="ml-2"
-                              onPress={() => {
-                                const updatedChats = chats.filter((c, i) => c.name !== chats[index].name);
-                                setChats(updatedChats);
-                              }}
-                            >
-                              X
-                            </Button>
+                        <div className="flex flex-row justify-between">
+                          <div className="flex-1 truncate">{chat.name}</div>
+                          <Button
+                            color="danger"
+                            isIconOnly
+                            size="sm"
+                            className="ml-2"
+                            onPress={() => {
+                              const updatedChats = chats.filter((c, i) => c.name !== chats[index].name);
+                              setChats(updatedChats);
+                            }}
+                          >
+                            X
+                          </Button>
                         </div>
                       </>
-                    }>
+                    }
+                  >
                     <GeminiDemo
                       chatName={chat.name}
                       multiMessages={chat.multiMessages}
@@ -260,8 +254,6 @@ export default function DocsPage() {
           </div>
         )
       }
-
-      {/* <GeminiDemo /> */}
     </div>
   );
 }
