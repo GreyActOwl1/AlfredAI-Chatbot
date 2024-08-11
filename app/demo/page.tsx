@@ -36,7 +36,7 @@ export default function DocsPage() {
   return (<div
     className="flex flex-col gap-4"
   >
-    <h1 className={title()}>Docs</h1> <Modal 
+    <h1 className={title()}>Chat</h1> <Modal 
         backdrop="opaque" 
         isOpen={isOpen} 
         onOpenChange={onOpenChange}
