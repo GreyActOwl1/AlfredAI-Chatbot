@@ -126,35 +126,38 @@ const GeminiDemo: React.FC<MyComponentProps> = ({chatName, multiMessages, setMul
     console.log("messages when mounted: " + JSON.stringify(messages));
   }, [messages]);
 
-  return (   <div className="container mx-auto p-4 w-full">
-    <h1 className="text-2xl font-bold mb-4">{chatName}</h1>
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={input}
-        onChange={handleInputChange}
-        className="border p-2 mb-4 w-full"
-        placeholder="Enter your prompt"
-      />
-      <button
-        type="submit"
-        className="bg-blue-500 text-white p-2 rounded"
-        disabled={isLoading}
-      >
-        {isLoading ? 'Generating...' : 'Submit'}
-      </button>
-    </form>
+  return (   <div className="md:p-4 md:w-[1200px]">
+    <h1 className="text-2xl font-bold mb-4 text-black dark:text-white">{chatName}</h1>
+
     {error && <p className="text-red-500 mt-4">{error.message}</p>}
     {messages.length != 0 && (
-      <div className="mt-4 p-4 border rounded bg">
+      <div className="mt-4 p-4 bg-gray-200 dark:bg-slate-900 w-full rounded-md ">
           {messages.map(m => (
-            <pre key={m.id} className="whitespace-pre-wrap break-words max-w-full">
+            <pre key={m.id} className="whitespace-pre-wrap text-gray-950 dark:text-white break-words w-full">
               {m.role === 'user' ? 'User: ' : 'AI: '}
               {m.content}
             </pre>
           ))}
       </div>
     )}
+    
+    <form onSubmit={handleSubmit} className='flex justify-between h-12 w-full bg-gray-100 dark:bg-black  border border-gray-400 mt-6'>
+      <input
+        type="text"
+        value={input}
+        onChange={handleInputChange}
+        className=" h-full w-[75%] md:w-[90%] outline-none ml-2 bg-gray-100 dark:bg-black dark:text-white text-gray-950"
+        placeholder="Enter your prompt"
+      />
+      <button
+        type="submit"
+        className="bg-blue-500 text-white w-[25%] md:w-[10%] h-full text-sm md:text-md hover:bg-blue-600"
+        disabled={isLoading}
+      >
+        {isLoading ? 'Generating...' : 'Submit'}
+      </button>
+    </form>
+   
 
   </div>
 );

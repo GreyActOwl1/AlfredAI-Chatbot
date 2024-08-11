@@ -13,7 +13,7 @@ const NavBar = () => {
     return (
         <nav className="-pl-2 md:ml-0 w-full lg:max-w-7xl h-28 pt-8 lg:mx-auto bg-white dark:bg-black flex justify-between">
             {/* Logo*/}
-       <Link href="/"> <Image src="/images/logo.png" alt="Alfred AI Logo" width={150} height={150} className='-mt-2 w-36 md:w-48 flex items-start'/></Link>
+       <Link href="/"> <Image src="/images/logo.png" alt="Alfred AI Logo" width={100} height={100} className='-mt-2 w-20 md:w-32 flex items-start'/></Link>
        
         <div className='hidden lg:flex gap-x-8'>
             
