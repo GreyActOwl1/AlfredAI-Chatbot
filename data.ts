@@ -4,7 +4,7 @@ export const teamDetails = [
      Name:"Adrian E.",
      imageUrl:"/images/adrian.png",
      Tagline:"Full-Stack Developer",
-     LinkedinUrl:"https://www.linkedin.com/in/adrian-e-415240278/",
+     LinkedinUrl:"https://www.linkedin.com/",
      GithubUrl:"https://github.com/GreyActOwl1"
     },
     {
