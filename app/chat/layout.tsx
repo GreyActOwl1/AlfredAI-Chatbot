@@ -1,4 +1,4 @@
-// export default function AboutLayout({
+// export default function DocsLayout({
 //   children,
 // }: {
 //   children: React.ReactNode;
@@ -11,17 +11,16 @@
 //     </section>
 //   );
 // }
-
-export default function AboutLayout({
+export default function DocsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-      <div className="bg-white dark:bg-black w-full min-h-screen">
+     <div className="w-full h-full bg-white dark:bg-black">
         {children}
       </div>
-
+    
   );
 }
 
