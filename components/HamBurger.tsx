@@ -66,7 +66,7 @@ const HamBurger = () => {
 									Login/Register
 								</Link>
 								<Link
-									href="/demo"
+									href="/chat"
 									className="p-2 flex justify-center w-[98%] transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-500"
 								>
 									Chat

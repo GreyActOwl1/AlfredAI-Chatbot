@@ -31,7 +31,7 @@ const NavBar = () => {
         {/*LoginIn/Register Link */}
         <Link href="" className='text-gray-500 dark:text-gray-100 dark:hover:text-white hover:text-black text-md mt-1.5 font-medium'>Login/Register</Link>
         {/* Chat Page Link */}
-        <Link href="/demo" className='text-gray-500 dark:text-gray-100 dark:hover:text-white hover:text-black text-md mt-1.5 font-medium'>Chat</Link>
+        <Link href="/chat" className='text-gray-500 dark:text-gray-100 dark:hover:text-white hover:text-black text-md mt-1.5 font-medium'>Chat</Link>
         </div>
         </div>
             
