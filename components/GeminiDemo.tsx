@@ -45,7 +45,7 @@ const GeminiDemo: React.FC<MyComponentProps> = ({
 
 	return (
 		<div className="md:p-4 md:w-[1200px]">
-			<h1 className="text-2xl font-bold mb-4 text-black dark:text-white">
+			<h1 className="text-2xl font-bold mb-4 text-black">
 				{chatName}
 			</h1>
 
